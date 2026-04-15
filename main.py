@@ -78,4 +78,4 @@ def DeleteStudent(student_id:str):
             }
     return {
         "message": "Student not found"
-    }
+}
