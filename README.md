@@ -1,89 +1,160 @@
-# Fast API Practice
+# 🚀 FastAPI + PostgreSQL CRUD API
 
-A simple FastAPI practice project implementing a lightweight in-memory student management API. This repository demonstrates building and testing CRUD endpoints using FastAPI and Pydantic models.
+A backend project built with **FastAPI**, **SQLModel**, and **PostgreSQL** demonstrating full CRUD operations with proper API design and database integration.
 
-## Key Features
+---
 
-- Create a new student record with `POST /students`
-- Retrieve all students with `GET /getAllstudents`
-- Retrieve a student by ID with `GET /studentID{id}`
-- Update an existing student with `PUT /updatestd{id}`
-- Delete a student with `DELETE /deletestd{id}`
+## 📌 Features
 
-## Requirements
+- Create student records
+- Get all students
+- Get student by ID
+- Update student data
+- Delete student records
+- PostgreSQL integration using SQLModel ORM
 
-- Python 3.13+
+---
+
+## 🛠️ Tech Stack
+
 - FastAPI
-- uvicorn
+- SQLModel (ORM + Pydantic)
+- PostgreSQL (Supabase / Local)
+- Uvicorn
+- Python 3.10+
 
-## Installation
+---
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd fast-api-practice
-   ```
+## 📂 Project Structure
 
-2. Create and activate a virtual environment:
-   ```bash
-   python -m venv .venv
-   .\.venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Run the Application
-
-Start the FastAPI server using uvicorn:
-
-```bash
-uvicorn main:app --reload
+```
+fast-api-practice/
+│
+├── students/
+│   ├── database_prac.py     # API routes
+│   ├── models/
+│   │   └── std_data.py      # Models (Student, UpdateStudent)
+│   ├── config/
+│   │   └── db.py            # Database connection & engine
+│
+├── .env                     # Environment variables
+└── README.md
 ```
 
-The API will be available at `http://127.0.0.1:8000`.
+---
 
-## API Endpoints
+## ⚙️ Setup Instructions
 
-### Create student
+### 1. Clone the repo
 
-- Method: `POST`
-- URL: `/students`
-- Body:
-  ```json
-  {
-    "name": "John Doe",
-    "age": 20,
-    "email": "john@example.com",
-    "grade": "A"
-  }
-  ```
+```bash
+git clone <your-repo-link>
+cd fast-api-practice
+```
+
+### 2. Create virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Linux/Mac
+.venv\Scripts\activate      # Windows
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file:
+
+```
+DATABASE_URL=your_postgresql_connection_string
+```
+
+---
+
+## ▶️ Run the Server
+
+```bash
+uvicorn students.database_prac:app --reload
+```
+
+API will run on:
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger Docs:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## 🔗 API Endpoints
 
 ### Get all students
-
-- Method: `GET`
-- URL: `/getAllstudents`
+```
+GET /getstudents
+```
 
 ### Get student by ID
+```
+GET /getstudentbyid?id=1
+```
 
-- Method: `GET`
-- URL: `/studentID{id}`
+### Add student
+```
+POST /addstudents
+```
 
-### Update student data
-
-- Method: `PUT`
-- URL: `/updatestd{id}`
-- Body: same as create body
+### Update student
+```
+PUT /updatestudent/{id}
+```
 
 ### Delete student
+```
+DELETE /deletestudent/{id}
+```
 
-- Method: `DELETE`
-- URL: `/deletestd{id}`
+---
 
-## Notes
+## 🧠 Learning Outcomes
 
-- Data is stored in memory only and resets when the server restarts.
-- This project is designed for learning FastAPI basics and API route creation.
-- Review `main.py` for the current implementation details.
+- Understanding RESTful API structure
+- Working with SQLModel ORM
+- Handling database sessions properly
+- Performing CRUD operations with PostgreSQL
+- Debugging real backend errors (schema mismatch, query issues)
+
+---
+
+## ⚠️ Notes
+
+- Make sure your database schema is synced with your models
+- Use migrations (Alembic) in production instead of manual changes
+- Avoid hardcoding values — always use environment variables
+
+---
+
+## 📌 Future Improvements
+
+- Add Alembic migrations
+- Add authentication (JWT)
+- Add validation & response schemas
+- Dockerize the application
+- Deploy on cloud (Render / Railway / AWS)
+
+---
+
+## 👨‍💻 Author
+
+Huzaifa – Backend Developer (FastAPI, AI Agents, Next.js)
+
+---

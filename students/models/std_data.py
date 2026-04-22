@@ -17,4 +17,10 @@ class Student(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
     name: str
     age: int
-    is_active: bool
+    fees_paid: bool
+
+
+class UpdateStudent(SQLModel):
+    name: str | None 
+    age: int | None
+    fees_paid: bool | None
